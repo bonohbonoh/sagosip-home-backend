@@ -34,6 +34,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set up Dockerfile
+        run: echo "${{ secrets.DOCKERFILE_CONTENT }}" > $GITHUB_WORKSPACE/Dockerfile
+
       # Setup gcloud CLI
       - uses: GoogleCloudPlatform/github-actions/setup-gcloud@main
         with:
