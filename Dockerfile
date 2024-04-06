@@ -1,8 +1,8 @@
 FROM openjdk:17-oracle AS TEMP_BUILD_IMAGE
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
-COPY ../../build.gradle settings.gradle gradlew $APP_HOME/
-COPY ../../gradle $APP_HOME/gradle/
+COPY build.gradle settings.gradle gradlew $APP_HOME/
+COPY gradle $APP_HOME/gradle/
 RUN microdnf install findutils
 RUN ./gradlew build -x test
 
