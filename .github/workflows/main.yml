@@ -41,7 +41,10 @@ jobs:
           version: '>= 416.0.0'
           service_account_key: ${{ secrets.GCE_SA_KEY }}
           project_id: $ ${{ secrets.GCE_PROJECT }}
-
+        run: |
+          gcloud config set project ${{ secrets.GCE_PROJECT }}
+        env:
+          CLOUDSDK_AUTH_CREDENTIAL_FILE_CONTENT: ${{ secrets.GCE_SA_KEY }}
       # Configure Docker to use the gcloud command-line tool as a credential
       # helper for authentication
       - run: |-
