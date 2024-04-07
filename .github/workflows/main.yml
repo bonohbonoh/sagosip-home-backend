@@ -45,7 +45,7 @@ jobs:
 
       - name: Authenticate with gcloud
         run: |
-          echo "${{ secrets.GCP_SA_KEY }}" | base64 --decode > /tmp/key.json
+          echo "${{ secrets.GCE_SA_KEY }}" | base64 --decode > /tmp/key.json
           gcloud auth activate-service-account --key-file=/tmp/key.json
 
       - run: |-
