@@ -42,11 +42,17 @@ jobs:
           export_default_credentials: true
           install_components: 'kubectl'
 
-      # Configure Docker to use the gcloud command-line tool as a credential
-      # helper for authentication
-      - run: |
+
+      - name: Authenticate with gcloud
+        run: |
+          echo "${{ secrets.GCP_SA_KEY }}" | base64 --decode > /tmp/key.json
+          gcloud auth activate-service-account --key-file=/tmp/key.json
+
+      - run: |-
           gcloud config set project ${{ secrets.GCE_PROJECT }}
 
+      # Configure Docker to use the gcloud command-line tool as a credential
+      # helper for authentication
       - run: |-
           gcloud auth configure-docker
 
