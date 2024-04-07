@@ -21,6 +21,18 @@ repositories {
 	mavenCentral()
 }
 
+//sourceSets {
+//	main {
+//		java {
+//			srcDir 'src/main/java'
+//		}
+//		resources {
+//			srcDir 'src/main/resources'
+//		}
+//	}
+//}
+
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -37,9 +49,6 @@ tasks.named('bootBuildImage') {
 
 tasks.bootJar {
 	mainClass = 'com.leejeong.sagosiphomebackend.SagosipHomeBackendApplication'
-	manifest {
-		attributes 'Class-Path': configurations.compileClasspath.collect { it.getName() }.join(' ')
-	}
 	archiveFileName.set("sagosip_home.jar")
 	destinationDirectory.set(file("./"))
 }

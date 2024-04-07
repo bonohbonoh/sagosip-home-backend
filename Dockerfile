@@ -3,7 +3,9 @@ ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
 COPY build.gradle settings.gradle gradlew $APP_HOME
 COPY gradle $APP_HOME/gradle/
+COPY src src
 RUN microdnf install findutils
+
 RUN ./gradlew build
 
 WORKDIR $APP_HOME
