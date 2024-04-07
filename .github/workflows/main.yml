@@ -44,6 +44,9 @@ jobs:
 
       # Configure Docker to use the gcloud command-line tool as a credential
       # helper for authentication
+      - run: |
+          gcloud config set project ${{ secrets.GCE_PROJECT }}
+
       - run: |-
           gcloud auth configure-docker
 
