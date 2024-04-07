@@ -19,7 +19,6 @@ on:
     branches:
       - main
 
-
 env:
   PROJECT_ID: ${{ secrets.GCE_PROJECT }}
   GCE_INSTANCE: instance-20240406-053650
@@ -46,7 +45,7 @@ jobs:
       # Configure Docker to use the gcloud command-line tool as a credential
       # helper for authentication
       - run: |-
-          gcloud --quiet auth configure-docker
+          gcloud auth configure-docker
       # Build the Docker image
       - name: Build
         run: |-
