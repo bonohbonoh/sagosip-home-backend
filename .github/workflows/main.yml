@@ -45,8 +45,9 @@ jobs:
 
       - name: Authenticate with gcloud
         run: |
-          echo "${{ secrets.GCE_SA_KEY }}" | > /tmp/key.json
-          gcloud auth activate-service-account --key-file=/tmp/key.json
+          gcloud auth activate-service-account --key-file=<(echo $GCP_SA_KEY)
+        env:
+          GCP_SA_KEY: ${{ secrets.GCE_SA_KEY }}
 
       - run: |-
           gcloud config set project ${{ secrets.GCE_PROJECT }}
