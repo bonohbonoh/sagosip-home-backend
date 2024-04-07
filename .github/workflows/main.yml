@@ -42,12 +42,11 @@ jobs:
           export_default_credentials: true
           install_components: 'kubectl'
 
-
+      # Auth GCP
       - name: Authenticate with gcloud
-        run: |
-          gcloud auth activate-service-account --key-file=<(echo $GCP_SA_KEY)
-        env:
-          GCP_SA_KEY: ${{ secrets.GCE_SA_KEY }}
+        uses: 'google-github-actions/auth@v2'
+        with:
+          service_account: ${{ secrets.GCP_SA_KEY }}}}
 
       - run: |-
           gcloud config set project ${{ secrets.GCE_PROJECT }}
