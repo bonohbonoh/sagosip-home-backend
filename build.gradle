@@ -41,6 +41,7 @@ tasks.bootJar {
 		attributes 'Class-Path': configurations.compileClasspath.collect { it.getName() }.join(' ')
 	}
 	archiveFileName.set("sagosip_home.jar")
+	destinationDirectory.set(file("./"))
 }
 
 tasks.named('test') {

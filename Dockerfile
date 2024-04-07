@@ -6,8 +6,6 @@ COPY gradle $APP_HOME/gradle/
 RUN microdnf install findutils
 RUN ./gradlew build
 
-ARG JAR_PATH=build/libs
 WORKDIR $APP_HOME
-COPY $JAR_PATH/$ARTIFACT_NAME .
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "sagosip_home.jar"]
